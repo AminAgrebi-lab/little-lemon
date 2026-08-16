@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-# List of installed apps in the LittleLemon project
+# Installed apps for the LittleLemon project
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,13 +44,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Local apps
     'restaurant',
-
-    # Third-party apps (Add this line!)
     'rest_framework',
+    'rest_framework.authtoken',  # Creates the tokens table for token auth
+    'djoser',                    # Must be placed AFTER rest_framework
 ]
+
+# Default authentication schemes for DRF
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
+
+# Djoser configuration: ask the user to retype the password on registration
+DJOSER = {
+    'USER_CREATE_PASSWORD_RETYPE': True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
