@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# List of installed apps in the LittleLemon project
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,7 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Local apps
     'restaurant',
+
+    # Third-party apps (Add this line!)
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
