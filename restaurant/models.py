@@ -14,9 +14,9 @@ class Menu(models.Model):
     # Inventory count for stock management
     inventory = models.SmallIntegerField()
 
-    # String representation for admin and debugging
+    # String representation matching the unit test expectation
     def __str__(self):
-        return f'{self.title} - ${self.price}'
+        return f'{self.title} : {str(self.price)}'
 
 # Define the Booking model for table reservations
 
