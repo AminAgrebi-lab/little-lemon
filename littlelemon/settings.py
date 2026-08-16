@@ -104,7 +104,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'littlelemon',   # must match the created database name
         'USER': 'root',
-        'PASSWORD': 'RH@AbS3!Zm4uEFL',
+        'PASSWORD': 'root@123',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
