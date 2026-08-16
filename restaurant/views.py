@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, viewsets
 
 from .models import Menu, Booking
 from .serializers import MenuSerializer, BookingSerializer
@@ -12,23 +12,23 @@ from .serializers import MenuSerializer, BookingSerializer
 def index(request):
     return render(request, 'index.html', {'current_year': datetime.now().year})
 
-# Handles GET (list all items) and POST (create a new item)
+# Handles GET (list all items) and POST (create a new item) for Menu
 
 
 class MenuItemView(generics.ListCreateAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
-# Handles GET / PUT / PATCH / DELETE for a single item by its id
+# Handles GET / PUT / PATCH / DELETE for a single Menu item by its id
 
 
 class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
-# Handles GET (list all bookings) and POST (create a new booking)
+# Provides default CRUD operations (GET, POST, PUT, DELETE) for Bookings
 
 
-class BookingView(generics.ListCreateAPIView):
+class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer

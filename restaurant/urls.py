@@ -11,7 +11,4 @@ urlpatterns = [
 
     # Menu API: GET / PUT / DELETE a single item by id
     path('menu/<int:pk>/', views.SingleMenuItemView.as_view(), name='menu-detail'),
-
-    # Booking API: GET list all bookings | POST create a new booking
-    path('bookings/', views.BookingView.as_view(), name='booking-list'),
 ]
