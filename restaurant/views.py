@@ -3,6 +3,9 @@ from datetime import datetime
 from django.shortcuts import render
 from rest_framework import generics, viewsets
 
+# Step 2: Import the IsAuthenticated permission class
+from rest_framework.permissions import IsAuthenticated
+
 from .models import Menu, Booking
 from .serializers import MenuSerializer, BookingSerializer
 
@@ -32,3 +35,5 @@ class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    # Step 3: Secure the booking API - only authenticated users can access it
+    permission_classes = [IsAuthenticated]
